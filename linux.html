@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+            color: #f4f4f9;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 1em 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 2em;
+            margin: 2em;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5em;
+        }
+
+        .example {
+            background-color: #f9f9f9;
+            padding: 1em;
+            border-left: 5px solid #333;
+            margin: 1em 0;
+            font-family: monospace;
+        }
+
+        .screenshot {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Linux Commands Showcase</h1>
+        <p>An interactive guide to essential Linux commands</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#find">Find</a></li>
+            <li><a href="#tar">Tar</a></li>
+            <li><a href="#gzip">Gzip</a></li>
+            <li><a href="#gunzip">Gunzip</a></li>
+            <li><a href="#zip">Zip</a></li>
+            <li><a href="#chmod">Chmod</a></li>
+            <li><a href="#chown">Chown</a></li>
+            <li><a href="#chgrp">Chgrp</a></li>
+            <li><a href="#ps">Ps</a></li>
+        </ul>
+    </nav>
+
+    <section id="find">
+        <h2>Find</h2>
+        <p>The <code>find</code> command searches for files and directories in a directory hierarchy based on specified conditions.</p>
+        <ul>
+            <li>Locate files by name, type, size, permissions, or modification time.</li>
+            <li>Combine with <code>-exec</code> to execute other commands on matching files.</li>
+            <li>Supports advanced filtering options with expressions like <code>-iname</code> for case-insensitive matches.</li>
+        </ul>
+        <div class="example">
+            Example 1: Find all text files in the /home directory: <code>find /home -name "*.txt"</code><br>
+            Example 2: Find files modified in the last 7 days: <code>find /var/log -mtime -7</code><br>
+            Example 3: Search for files larger than 100MB: <code>find / -size +100M</code>
+        </div>
+        <div class="screenshot">
+            <img src="find.png" alt="Find command example screenshot">
+        </div>
+    </section>
+
+    <section id="tar">
+        <h2>Tar</h2>
+        <p>The <code>tar</code> command archives files and directories into a single tarball.</p>
+        <ul>
+            <li>Create, extract, and list files from an archive.</li>
+            <li>Supports compression with <code>gzip</code> or <code>bzip2</code>.</li>
+            <li>Preserves file permissions and directory structure.</li>
+        </ul>
+        <div class="example">
+            Example 1: Create an archive: <code>tar -cvf archive.tar /path/to/files</code><br>
+            Example 2: Extract an archive: <code>tar -xvf archive.tar</code><br>
+            Example 3: Create a compressed archive: <code>tar -czvf archive.tar.gz /path/to/files</code>
+        </div>
+        <div class="screenshot">
+            <img src="tar.jpg" alt="Tar command example screenshot">
+        </div>
+    </section>
+
+    <section id="gzip">
+        <h2>Gzip</h2>
+        <p>The <code>gzip</code> command compresses files to save storage space.</p>
+        <ul>
+            <li>Reduces file size for efficient storage and transfer.</li>
+            <li>Replaces original file with a <code>.gz</code> compressed version.</li>
+            <li>Works seamlessly with the <code>tar</code> command for archiving and compressing.</li>
+        </ul>
+        <div class="example">
+            Example 1: Compress a file: <code>gzip file.txt</code><br>
+            Example 2: Compress multiple files: <code>gzip file1.txt file2.txt</code><br>
+            Example 3: Check compression ratio: <code>gzip -l file.txt.gz</code>
+        </div>
+        <div class="screenshot">
+            <img src="linux-gzip-filter1.png" alt="Gzip command example screenshot">
+        </div>
+    </section>
+
+    <section id="gunzip">
+        <h2>Gunzip</h2>
+        <p>The <code>gunzip</code> command decompresses files compressed with gzip.</p>
+        <ul>
+            <li>Restores files compressed with <code>gzip</code>.</li>
+            <li>Automatically removes the <code>.gz</code> extension after decompression.</li>
+            <li>Supports decompressing files in bulk.</li>
+        </ul>
+        <div class="example">
+            Example 1: Decompress a file: <code>gunzip file.txt.gz</code><br>
+            Example 2: Decompress multiple files: <code>gunzip file1.gz file2.gz</code><br>
+            Example 3: Keep the compressed file after decompression: <code>gunzip -c file.txt.gz > file.txt</code>
+        </div>
+        <div class="screenshot">
+            <img src="gunzip.jpg" alt="Gunzip command example screenshot">
+        </div>
+    </section>
+
+    <section id="zip">
+        <h2>Zip</h2>
+        <p>The <code>zip</code> command compresses files and creates a zip archive.</p>
+        <ul>
+            <li>Supports adding multiple files to a single archive.</li>
+            <li>Widely used for compatibility with Windows systems.</li>
+            <li>Provides options for password protection.</li>
+        </ul>
+        <div class="example">
+            Example 1: Create a zip archive: <code>zip archive.zip file1.txt file2.txt</code><br>
+            Example 2: Add files to an existing archive: <code>zip -u archive.zip file3.txt</code><br>
+            Example 3: Password-protect a zip archive: <code>zip -e archive.zip file1.txt</code>
+        </div>
+        <div class="screenshot">
+            <img src="zip.png" alt="Zip command example screenshot">
+        </div>
+    </section>
+
+    <section id="chmod">
+        <h2>Chmod</h2>
+        <p>The <code>chmod</code> command changes file permissions.</p>
+        <ul>
+            <li>Modify read, write, and execute permissions for user, group, and others.</li>
+            <li>Use symbolic or numeric modes for permission changes.</li>
+            <li>Essential for controlling file access and security.</li>
+        </ul>
+        <div class="example">
+            Example 1: Set permissions to read, write, and execute for the owner, and read for others: <code>chmod 744 file.sh</code><br>
+            Example 2: Add execute permissions to a file: <code>chmod +x script.sh</code><br>
+            Example 3: Remove write permissions for the group: <code>chmod g-w file.txt</code>
+        </div>
+        <div class="screenshot">
+            <img src="chmod.jpg" alt="Chmod command example screenshot">
+        </div>
+    </section>
+
+    <section id="chown">
+        <h2>Chown</h2>
+        <p>The <code>chown</code> command changes file ownership.</p>
+        <ul>
+            <li>Assign ownership to a specific user and group.</li>
+            <li>Supports recursive changes for directories.</li>
+            <li>Useful for managing file ownership in multi-user systems.</li>
+        </ul>
+        <div class="example">
+            Example 1: Change owner and group: <code>chown user:group file.txt</code><br>
+            Example 2: Change owner recursively: <code>chown -R user:group /path/to/directory</code><br>
+            Example 3: Change only the owner: <code>chown user file.txt</code>
+        </div>
+        <div class="screenshot">
+            <img src="images.jfif" alt="Chown command example screenshot">
+        </div>
+    </section>
+
+    <section id="chgrp">
+        <h2>Chgrp</h2>
+        <p>The <code>chgrp</code> command changes the group ownership of a file or directory.</p>
+        <ul>
+            <li>Efficient for managing group access to shared files.</li>
+            <li>Supports recursive changes for entire directories.</li>
+            <li>Useful for managing project directories shared by a team.</li>
+        </ul>
+        <div class="example">
+            Example 1: Change group ownership: <code>chgrp group file.txt</code><br>
+            Example 2: Change group ownership recursively: <code>chgrp -R group /path/to/directory</code><br>
+            Example 3: Verify group ownership changes: <code>ls -l file.txt</code>
+        </div>
+        <div class="screenshot">
+            <img src="chgrp.jpg" alt="Chgrp command example screenshot">
+        </div>
+    </section>
+
+    <section id="ps">
+        <h2>Ps</h2>
+        <p>The <code>ps</code> command displays information about active processes.</p>
+        <ul>
+            <li>Provides a snapshot of current processes.</li>
+            <li>Options include viewing user processes, all processes, and specific process details.</li>
+            <li>Combine with tools like <code>grep</code> to filter results.</li>
+        </ul>
+        <div class="example">
+            Example 1: List all processes: <code>ps aux</code><br>
+            Example 2: View processes for a specific user: <code>ps -u username</code><br>
+            Example 3: Search for a specific process: <code>ps aux | grep process_name</code>
+        </div>
+        <div class="screenshot">
+            <img src="ps.png" alt="Ps command example screenshot">
+        </div>
+    </section>
+</body>
+</html>
